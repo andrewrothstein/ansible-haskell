@@ -1,0 +1,14 @@
+---
+- name: (Ubuntu) install haskell
+  when: ansible_distribution == "Ubuntu"
+  environment: proxy_env
+  apt: name={{ item }}
+  with_items:
+    - haskell-platform
+
+- name: (Fedora) install haskell
+  when: ansible_distribution == "Fedora"
+  environment: proxy_env
+  yum: name={{ item }}
+  with_items:
+    - haskell-platform
