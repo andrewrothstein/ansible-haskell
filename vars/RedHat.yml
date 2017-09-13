@@ -1,0 +1,6 @@
+---
+haskell_stack_dep_pkgs:
+  - libffi-devel
+  - zlib-devel
+  - gmp-devel
+  - perl

@@ -1,24 +1,42 @@
 ---
 galaxy_info:
   author: Andrew Rothstein
-  description: haskell role
-  company: BlackRock
+  description: installs Haskell
+  company: Core Dump
   license:
     - MIT
-  min_ansible_version: 1.2
+  min_ansible_version: 2.0
   platforms:
     - name: EL
       versions:
-        - 7
+        - all
     - name: Fedora
       versions:
-        - 21
+        - all
     - name: Ubuntu
       versions:
-        - trusty
-
-  categories:
+        - all
+    - name: Alpine
+      versions:
+        - all
+    - name: Archlinux
+      versions:
+        - all
+    - name: Debian
+      versions:
+        - jessie
+        - stretch
+  galaxy_tags:
     - development
 
-dependencies: []
-  
+dependencies:
+  - src: andrewrothstein.unarchive-deps
+    version: v1.0.9
+  - src: andrewrothstein.alpine-glibc-shim
+    version: v2.0.4
+  - src: andrewrothstein.gcc-toolbox
+    version: v1.0.6
+  - src: andrewrothstein.git
+    version: v3.0.1
+  - src: andrewrothstein.gpg
+    version: v1.0.1

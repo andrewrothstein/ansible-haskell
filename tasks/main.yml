@@ -1,12 +1,56 @@
 ---
-- name: (Debian) install haskell
-  when: ansible_os_family == 'Debian'
-  apt: name={{ item }} state=latest
+- name: resolve platform specific vars
+  include_vars: '{{item}}'
+  with_first_found:
+    - files:
+        - '{{ansible_distribution}}-{{ansible_distribution_release}}.yml'
+        - '{{ansible_distribution}}.yml'
+        - '{{ansible_os_family}}.yml'
+      skip: true
+      paths:
+        - '{{role_path}}/vars'
+- name: install dep os pkgs...
+  become: yes
+  become_user: root
+  with_items: '{{haskell_stack_dep_pkgs|default([])}}'
+  package:
+    name: '{{item}}'
+    state: present
+- name: download stack...
+  become: yes
+  become_user: root
+  get_url:
+    url: '{{haskell_stack_tgz_url}}'
+    dest: /tmp/{{haskell_stack_tgz}}
+    checksum: '{{haskell_stack_checksum}}'
+- name: unarchive...
+  become: yes
+  become_user: root
+  unarchive:
+    src: /tmp/{{haskell_stack_tgz}}
+    dest: '{{haskell_stack_parent_install_dir}}'
+    creates: '{{haskell_stack_install_dir}}'
+- name: link...
+  become: yes
+  become_user: root
+  file:
+    src: '{{haskell_stack_install_dir}}'
+    dest: '{{haskell_stack_link_dir}}'
+    state: link
+- name: add to login shell....
+  become: yes
+  become_user: root
   with_items:
-    - haskell-platform
-
-- name: (RedHat) install haskell
-  when: ansible_os_family == "RedHat"
-  yum: name={{ item }} state=latest
-  with_items:
-    - haskell-platform
+    - f: haskell-stack.sh
+      d: /etc/profile.d
+  template:
+    src: '{{item.f}}.j2'
+    dest: '{{item.d}}/{{item.f}}'
+    mode: '{{item.m|default("0644")}}'
+- name: setup...
+  become: yes
+  become_user: root
+  command: '{{haskell_stack_link_dir}}/stack setup'
+  args:
+    creates: '{{ansible_env.HOME}}/.stack'
+    
