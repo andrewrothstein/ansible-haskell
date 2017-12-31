@@ -39,6 +39,6 @@ dependencies:
   - src: andrewrothstein.git
     version: v3.0.1
   - src: andrewrothstein.gpg
-    version: v1.0.1
+    version: v1.0.2
   - src: andrewrothstein.bash
-    version: v1.0.5
+    version: v1.1.0

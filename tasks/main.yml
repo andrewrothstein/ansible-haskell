@@ -16,20 +16,36 @@
   package:
     name: '{{item}}'
     state: present
-- name: download stack...
+- name: check for installation of haskell stack...
   become: yes
-  become_user: root
-  get_url:
-    url: '{{haskell_stack_tgz_url}}'
-    dest: /tmp/{{haskell_stack_tgz}}
-    checksum: '{{haskell_stack_checksum}}'
-- name: unarchive...
-  become: yes
-  become_user: root
-  unarchive:
-    src: /tmp/{{haskell_stack_tgz}}
-    dest: '{{haskell_stack_parent_install_dir}}'
-    creates: '{{haskell_stack_install_dir}}'
+  stat:
+    path: '{{haskell_stack_install_dir}}'
+  changed_when: false
+  register: haskell_stack_binary
+- when: not haskell_stack_binary.stat.exists
+  block:
+    - name: download stack...
+      become: yes
+      become_user: root
+      get_url:
+        url: '{{haskell_stack_tgz_url}}'
+        dest: /tmp/{{haskell_stack_tgz}}
+        checksum: '{{haskell_stack_checksum}}'
+    - name: unarchive...
+      become: yes
+      become_user: root
+      unarchive:
+        src: /tmp/{{haskell_stack_tgz}}
+        dest: '{{haskell_stack_parent_install_dir}}'
+        creates: '{{haskell_stack_install_dir}}'
+  always:
+    - name: cleanup
+      become: yes
+      become_user: root
+      file:
+        path: /tmp/{{haskell_stack_tgz}}
+        state: absent
+    
 - name: link...
   become: yes
   become_user: root
@@ -37,6 +53,7 @@
     src: '{{haskell_stack_install_dir}}'
     dest: '{{haskell_stack_link_dir}}'
     state: link
+
 - name: add to login shell....
   become: yes
   become_user: root
@@ -47,6 +64,7 @@
     src: '{{item.f}}.j2'
     dest: '{{item.d}}/{{item.f}}'
     mode: '{{item.m|default("0644")}}'
+
 - name: setup...
   become: yes
   become_user: root

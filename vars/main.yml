@@ -1,6 +1,6 @@
 ---
 haskell_stack_name: stack-{{haskell_stack_ver}}-{{haskell_stack_os}}
-haskell_stack_checksum: '{{haskell_stack_checksums[haskell_stack_os]}}'
+haskell_stack_checksum: '{{haskell_stack_checksums[haskell_stack_ver][haskell_stack_os]}}'
 haskell_stack_tgz: '{{haskell_stack_name}}.tar.gz'
 haskell_stack_tgz_url: '{{haskell_stack_mirror}}/v{{haskell_stack_ver}}/{{haskell_stack_tgz}}'
 haskell_stack_install_dir: '{{haskell_stack_parent_install_dir}}/{{haskell_stack_name}}'
