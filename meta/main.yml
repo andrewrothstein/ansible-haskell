@@ -35,7 +35,7 @@ dependencies:
   - src: andrewrothstein.alpine-glibc-shim
     version: v2.0.5
   - src: andrewrothstein.gcc-toolbox
-    version: v1.0.6
+    version: v1.0.7
   - src: andrewrothstein.git
     version: v3.0.1
   - src: andrewrothstein.gpg
