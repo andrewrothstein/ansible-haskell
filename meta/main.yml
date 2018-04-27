@@ -41,4 +41,4 @@ dependencies:
   - src: andrewrothstein.gpg
     version: v1.0.2
   - src: andrewrothstein.bash
-    version: v1.1.0
+    version: v1.1.1
