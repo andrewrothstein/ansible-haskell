@@ -1,5 +1,5 @@
 ---
-haskell_stack_ver: '1.6.5'
+haskell_stack_ver: '1.7.1'
 haskell_stack_os: linux-x86_64
 
 haskell_stack_mirror: https://github.com/commercialhaskell/stack/releases/download
@@ -12,4 +12,7 @@ haskell_stack_checksums:
   '1.6.5':
     # https://github.com/commercialhaskell/stack/releases/download/v1.6.5/stack-1.6.5-linux-x86_64.tar.gz
     linux-x86_64: sha256:9efc933d23d7065e1787f688fc294fc37a0653e79cfa7e2008b65deef0699760
+  '1.7.1':
+    # https://github.com/commercialhaskell/stack/releases/download/v1.7.1/stack-1.7.1-linux-x86_64.tar.gz
+    linux-x86_64: sha256:647306bbf65dd0b555486e2a32776ba1cfe0c8f380e31c6aa93abd452cb209ee
 haskell_stack_parent_install_dir: /usr/local
