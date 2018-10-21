@@ -31,7 +31,7 @@ galaxy_info:
 
 dependencies:
   - src: andrewrothstein.unarchive-deps
-    version: v1.0.9
+    version: v1.0.10
   - src: andrewrothstein.alpine-glibc-shim
     version: v2.0.5
   - src: andrewrothstein.gcc-toolbox
