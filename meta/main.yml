@@ -24,13 +24,13 @@ galaxy_info:
     - development
 
 dependencies:
-  - src: andrewrothstein.unarchive-deps
+  - role: andrewrothstein.unarchive-deps
     version: v1.0.10
-   - src: andrewrothstein.gcc-toolbox
+  - role: andrewrothstein.gcc-toolbox
     version: v1.0.9
-  - src: andrewrothstein.git
+  - role: andrewrothstein.git
     version: v3.0.1
-  - src: andrewrothstein.gpg
+  - role: andrewrothstein.gpg
     version: v1.0.3
-  - src: andrewrothstein.bash
+  - role: andrewrothstein.bash
     version: v1.1.1
