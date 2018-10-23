@@ -16,13 +16,7 @@ galaxy_info:
     - name: Ubuntu
       versions:
         - all
-    - name: Alpine
-      versions:
-        - all
-    - name: Archlinux
-      versions:
-        - all
-    - name: Debian
+     - name: Debian
       versions:
         - jessie
         - stretch
@@ -32,13 +26,11 @@ galaxy_info:
 dependencies:
   - src: andrewrothstein.unarchive-deps
     version: v1.0.10
-  - src: andrewrothstein.alpine-glibc-shim
-    version: v2.0.5
-  - src: andrewrothstein.gcc-toolbox
-    version: v1.0.7
+   - src: andrewrothstein.gcc-toolbox
+    version: v1.0.9
   - src: andrewrothstein.git
     version: v3.0.1
   - src: andrewrothstein.gpg
-    version: v1.0.2
+    version: v1.0.3
   - src: andrewrothstein.bash
     version: v1.1.1
