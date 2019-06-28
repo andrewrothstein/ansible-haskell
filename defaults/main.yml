@@ -1,5 +1,5 @@
 ---
-haskell_stack_ver: '1.9.3'
+haskell_stack_ver: '2.1.1'
 haskell_stack_os: linux-x86_64
 
 haskell_stack_mirror: https://github.com/commercialhaskell/stack/releases/download
@@ -37,5 +37,22 @@ haskell_stack_checksums:
     windows-i386: sha256:4998ddacbea7fe3f0d91bf042d3c9bc5b9b9ba1371792d4dd9406825e309430a
     # https://github.com/commercialhaskell/stack/releases/download/v1.9.3/stack-1.9.3-windows-x86_64.tar.gz.sha256
     windows-x86_64: sha256:61e621c109689ab0b019742d08bbc37f02245f06e24da86ee93f4127988cef52
+  '2.1.1':
+    # https://github.com/commercialhaskell/stack/releases/download/v2.1.1/stack-2.1.1-freebsd-x86_64.tar.gz.sha256
+    freebsd-x86_64: sha256:68d568991a484e364f75aad384508e0276e738978da7686cbba7771afd7346d4
+    # https://github.com/commercialhaskell/stack/releases/download/v2.1.1/stack-2.1.1-linux-aarch64.tar.gz.sha256
+    linux-aarch64: sha256:abedcb28d7e5a8e7ab2416d1de4b7988b4743acd926086a0ca6ad68859b2e5a1
+    # https://github.com/commercialhaskell/stack/releases/download/v2.1.1/stack-2.1.1-linux-arm.tar.gz.sha256
+    linux-arm: sha256:4be9d0cd3f4edbf07f59a8f08501a61847b030ed8553240e63eb1bf0d4406635
+    # https://github.com/commercialhaskell/stack/releases/download/v2.1.1/stack-2.1.1-linux-i386.tar.gz.sha256
+    linux-i386: sha256:c541dd685fbe1c5bcb78db7e334f63d2f08e02e1c0d3c6c670f803a9f4ddcedb
+    # https://github.com/commercialhaskell/stack/releases/download/v2.1.1/stack-2.1.1-linux-x86_64-static.tar.gz.sha256
+    linux-x86_64-static: sha256:fffb6996312be9c45227aea2fbde4b0ed71c9e9cb52aeefb78f585e3ddd14e9f
+    # https://github.com/commercialhaskell/stack/releases/download/v2.1.1/stack-2.1.1-linux-x86_64.tar.gz.sha256
+    linux-x86_64: sha256:f53bb7a1e3f9bb097403c2df865a1e4e82a4a9bf15d7de1dacf4d620892816ef
+    # https://github.com/commercialhaskell/stack/releases/download/v2.1.1/stack-2.1.1-windows-i386.tar.gz.sha256
+    windows-i386: sha256:bff24b01d3776191b16faac57c1411966df704148abfe5a41f0e2dc02a5b2d4e
+    # https://github.com/commercialhaskell/stack/releases/download/v2.1.1/stack-2.1.1-windows-x86_64.tar.gz.sha256
+    windows-x86_64: sha256:cf48e5d7269d05a97ab001e15c9802fa37a97a595b18decd732be4ec52c8a9d1
 
 haskell_stack_parent_install_dir: /usr/local
