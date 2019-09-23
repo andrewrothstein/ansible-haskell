@@ -44,7 +44,7 @@
       file:
         path: /tmp/{{ haskell_stack_tgz }}
         state: absent
-    
+
 - name: link...
   become: yes
   become_user: root
@@ -70,4 +70,3 @@
   command: '{{ haskell_stack_link_dir }}/stack setup'
   args:
     creates: '{{ ansible_env.HOME }}/.stack'
-    
