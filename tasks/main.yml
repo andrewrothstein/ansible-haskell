@@ -1,25 +1,24 @@
 ---
 - name: resolve platform specific vars
-  include_vars: '{{item}}'
+  include_vars: '{{ item }}'
   with_first_found:
     - files:
-        - '{{ansible_distribution}}-{{ansible_distribution_release}}.yml'
-        - '{{ansible_distribution}}.yml'
-        - '{{ansible_os_family}}.yml'
+        - '{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml'
+        - '{{ ansible_distribution }}.yml'
+        - '{{ ansible_os_family }}.yml'
       skip: true
       paths:
-        - '{{role_path}}/vars'
+        - '{{ role_path }}/vars'
 - name: install dep os pkgs...
   become: yes
   become_user: root
-  with_items: '{{haskell_stack_dep_pkgs|default([])}}'
   package:
-    name: '{{item}}'
+    name: '{{ haskell_stack_dep_pkgs|default([]) }}'
     state: present
 - name: check for installation of haskell stack...
   become: yes
   stat:
-    path: '{{haskell_stack_install_dir}}'
+    path: '{{ haskell_stack_install_dir }}'
   changed_when: false
   register: haskell_stack_binary
 - when: not haskell_stack_binary.stat.exists
@@ -28,30 +27,30 @@
       become: yes
       become_user: root
       get_url:
-        url: '{{haskell_stack_tgz_url}}'
-        dest: /tmp/{{haskell_stack_tgz}}
-        checksum: '{{haskell_stack_checksum}}'
+        url: '{{ haskell_stack_tgz_url }}'
+        dest: /tmp/{{ haskell_stack_tgz }}
+        checksum: '{{ haskell_stack_checksum }}'
     - name: unarchive...
       become: yes
       become_user: root
       unarchive:
-        src: /tmp/{{haskell_stack_tgz}}
-        dest: '{{haskell_stack_parent_install_dir}}'
-        creates: '{{haskell_stack_install_dir}}'
+        src: /tmp/{{ haskell_stack_tgz }}
+        dest: '{{ haskell_stack_parent_install_dir }}'
+        creates: '{{ haskell_stack_install_dir }}'
   always:
     - name: cleanup
       become: yes
       become_user: root
       file:
-        path: /tmp/{{haskell_stack_tgz}}
+        path: /tmp/{{ haskell_stack_tgz }}
         state: absent
     
 - name: link...
   become: yes
   become_user: root
   file:
-    src: '{{haskell_stack_install_dir}}'
-    dest: '{{haskell_stack_link_dir}}'
+    src: '{{ haskell_stack_install_dir }}'
+    dest: '{{ haskell_stack_link_dir }}'
     state: link
 
 - name: add to login shell....
@@ -61,14 +60,14 @@
     - f: haskell-stack.sh
       d: /etc/profile.d
   template:
-    src: '{{item.f}}.j2'
-    dest: '{{item.d}}/{{item.f}}'
-    mode: '{{item.m|default("0644")}}'
+    src: '{{ item.f }}.j2'
+    dest: '{{ item.d }}/{{ item.f }}'
+    mode: '{{ item.m | default("0644") }}'
 
 - name: setup...
   become: yes
   become_user: root
-  command: '{{haskell_stack_link_dir}}/stack setup'
+  command: '{{ haskell_stack_link_dir }}/stack setup'
   args:
-    creates: '{{ansible_env.HOME}}/.stack'
+    creates: '{{ ansible_env.HOME }}/.stack'
     
