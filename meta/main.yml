@@ -2,7 +2,7 @@ dependencies:
 - role: andrewrothstein.unarchive-deps
   version: v1.1.2
 - role: andrewrothstein.gcc-toolbox
-  version: v1.0.14
+  version: v1.1.0
 - role: andrewrothstein.git
   version: v3.0.5
 - role: andrewrothstein.gpg
