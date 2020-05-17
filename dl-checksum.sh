@@ -1,24 +1,29 @@
 #!/usr/bin/env sh
-VER='2.1.3'
 DIR=~/Downloads
-MIRROR=https://github.com/commercialhaskell/stack/releases/download/v${VER}
+MIRROR=https://github.com/commercialhaskell/stack/releases/download
 
 dl()
 {
-    local os=$1
-    local arch=$2
+    local ver=$1
+    local os=$2
+    local arch=$3
     local platform="${os}-${arch}"
-    local url=$MIRROR/stack-${VER}-${platform}.tar.gz.sha256
+    local url=$MIRROR/v${ver}/stack-${ver}-${platform}.tar.gz.sha256
     printf "    # %s\n" $url
     printf "    %s: sha256:%s\n" $platform $(curl -SsL $url | awk '{print $1}')
 }
 
-printf "  '%s':\n" $VER
-dl freebsd x86_64
-dl linux aarch64
-dl linux arm
-dl linux i386
-dl linux x86_64-static
-dl linux x86_64
-dl windows i386
-dl windows x86_64
+dl_ver () {
+    local ver=$1
+    printf "  '%s':\n" $ver
+    dl $ver freebsd x86_64
+    dl $ver linux aarch64
+    dl $ver linux arm
+    dl $ver linux i386
+    dl $ver linux x86_64-static
+    dl $ver linux x86_64
+    dl $ver windows i386
+    dl $ver windows x86_64
+}
+
+dl_ver ${1:-2.1.3}
