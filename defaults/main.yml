@@ -1,6 +1,9 @@
 ---
 haskell_stack_ver: '2.1.3'
-haskell_stack_os: linux-x86_64
+haskell_stack_os: linux
+haskell_stack_arch: x86_64
+
+haskell_stack_parent_install_dir: /usr/local
 
 haskell_stack_mirror: https://github.com/commercialhaskell/stack/releases/download
 haskell_stack_checksums:
@@ -71,8 +74,6 @@ haskell_stack_checksums:
     windows-i386: sha256:9bc67a8dc0466b6fc12b44b3920ea6be3b00fa1c52cbeada1a7c092a5402ebb3
     # https://github.com/commercialhaskell/stack/releases/download/v2.1.3/stack-2.1.3-windows-x86_64.tar.gz.sha256
     windows-x86_64: sha256:075bcd9130cd437de4e726466e5738c92c8e47d5666aa3a15d339e6ba62f76b2
-
-haskell_stack_parent_install_dir: /usr/local
   '2.1.3':
     # https://github.com/commercialhaskell/stack/releases/download/v2.1.3/stack-2.1.3-freebsd-x86_64.tar.gz.sha256
     freebsd-x86_64: sha256:b646380bd1ee6c5f16ea111c31be494e6e85ed5050dea41cd29fac5973767821
