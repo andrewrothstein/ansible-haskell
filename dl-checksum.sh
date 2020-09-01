@@ -16,14 +16,9 @@ dl()
 dl_ver () {
     local ver=$1
     printf "  '%s':\n" $ver
-    dl $ver freebsd x86_64
-    dl $ver linux aarch64
-    dl $ver linux arm
-    dl $ver linux i386
-    dl $ver linux x86_64-static
     dl $ver linux x86_64
-    dl $ver windows i386
+    dl $ver osx x86_64
     dl $ver windows x86_64
 }
 
-dl_ver ${1:-2.1.3}
+dl_ver ${1:-2.3.3}

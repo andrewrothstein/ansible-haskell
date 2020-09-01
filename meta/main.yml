@@ -1,14 +1,14 @@
 dependencies:
 - role: andrewrothstein.unarchive-deps
-  version: v1.1.2
+  version: v1.1.5
 - role: andrewrothstein.gcc-toolbox
-  version: v1.1.0
+  version: v1.1.2
 - role: andrewrothstein.git
-  version: v3.0.5
+  version: v3.0.9
 - role: andrewrothstein.gpg
-  version: v1.0.5
+  version: v1.0.7
 - role: andrewrothstein.bash
-  version: v1.1.4
+  version: v1.1.6
 galaxy_info:
   author: Andrew Rothstein
   company: Core Dump
@@ -19,16 +19,23 @@ galaxy_info:
   - MIT
   min_ansible_version: 2.0
   platforms:
+  - name: Debian
+    versions:
+    - buster
+    - stretch
   - name: EL
     versions:
-    - all
+    - 7
+    - 8
   - name: Fedora
+    versions:
+    - 31
+    - 32
+  - name: Gentoo
     versions:
     - all
   - name: Ubuntu
     versions:
-    - all
-  - name: Debian
-    versions:
-    - jessie
-    - stretch
+    - bionic
+    - focal
+    - xenial
