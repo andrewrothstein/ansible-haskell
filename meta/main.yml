@@ -4,7 +4,7 @@ dependencies:
 - role: andrewrothstein.gcc-toolbox
   version: v1.1.2
 - role: andrewrothstein.git
-  version: v3.0.9
+  version: v3.1,1
 - role: andrewrothstein.gpg
   version: v1.0.7
 - role: andrewrothstein.bash
@@ -31,9 +31,6 @@ galaxy_info:
     versions:
     - 31
     - 32
-  - name: Gentoo
-    versions:
-    - all
   - name: Ubuntu
     versions:
     - bionic

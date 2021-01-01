@@ -13,12 +13,11 @@ env:
 - OS=debian_stretch
 - OS=fedora_31
 - OS=fedora_32
-- OS=gentoo_latest
 - OS=ubuntu_bionic
 - OS=ubuntu_focal
 - OS=ubuntu_xenial
 language: python
-python: '3.7'
+python: '3.9'
 script:
 - ansible-galaxy-local-deps-write
 - dcb --upstreamgroup andrewrothstein --upstreamapp docker-ansible-role --pullall
