@@ -15,7 +15,7 @@
   package:
     name: '{{ haskell_stack_dep_pkgs|default([]) }}'
     state: present
-- name: check for installation of haskell stack...
+- name: check for installation in  {{ haskell_stack_install_dir }}...
   become: yes
   stat:
     path: '{{ haskell_stack_install_dir }}'
@@ -23,50 +23,32 @@
   register: haskell_stack_binary
 - when: not haskell_stack_binary.stat.exists
   block:
-    - name: download stack...
+    - name: downloading {{ haskell_stack_tgz_url }} to {{ haskell_stack_tmp_tgz }}
       become: yes
       become_user: root
       get_url:
         url: '{{ haskell_stack_tgz_url }}'
-        dest: /tmp/{{ haskell_stack_tgz }}
+        dest: '{{ haskell_stack_tmp_tgz }}'
         checksum: '{{ haskell_stack_checksum }}'
-    - name: unarchive...
+    - name: unarchiving {{ haskell_stack_tmp_tgz }} to {{ haskell_stack_parent_install_dir }}
       become: yes
       become_user: root
       unarchive:
-        src: /tmp/{{ haskell_stack_tgz }}
+        src: '{{ haskell_stack_tmp_tgz }}'
         dest: '{{ haskell_stack_parent_install_dir }}'
         creates: '{{ haskell_stack_install_dir }}'
   always:
-    - name: cleanup
+    - name: rm {{ haskell_stack_tmp_tgz }}
       become: yes
       become_user: root
       file:
-        path: /tmp/{{ haskell_stack_tgz }}
+        path: '{{ haskell_stack_tmp_tgz }}'
         state: absent
 
-- name: link...
+- name: linking {{ haskell_stack_link_exe }} to {{ haskell_stack_install_exe }}
   become: yes
   become_user: root
   file:
-    src: '{{ haskell_stack_install_dir }}'
-    dest: '{{ haskell_stack_link_dir }}'
+    src: '{{ haskell_stack_install_exe }}'
+    dest: '{{ haskell_stack_link_exe }}'
     state: link
-
-- name: add to login shell....
-  become: yes
-  become_user: root
-  with_items:
-    - f: haskell-stack.sh
-      d: /etc/profile.d
-  template:
-    src: '{{ item.f }}.j2'
-    dest: '{{ item.d }}/{{ item.f }}'
-    mode: '{{ item.m | default("0644") }}'
-
-- name: setup...
-  become: yes
-  become_user: root
-  command: '{{ haskell_stack_link_dir }}/stack setup'
-  args:
-    creates: '{{ ansible_env.HOME }}/.stack'
