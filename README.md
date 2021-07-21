@@ -1,8 +1,8 @@
 andrewrothstein.haskell
 =========
-[![Build Status](https://travis-ci.org/andrewrothstein/ansible-haskell.svg?branch=master)](https://travis-ci.org/andrewrothstein/ansible-haskell)
+![Build Status](https://github.com/andrewrothstein/ansible-haskell/actions/workflows/build.yml/badge.svg)
 
-A brief description of the andrewrothstein.haskell goes here.
+Installs Haskell via [stack](https://docs.haskellstack.org/en/stable/README/)
 
 Requirements
 ------------
