@@ -1,5 +1,5 @@
 ---
-haskell_stack_ver: 2.7.3
+haskell_stack_ver: 2.7.5
 haskell_stack_os: linux
 haskell_stack_arch: x86_64
 
@@ -95,3 +95,10 @@ haskell_stack_checksums:
     osx-x86_64: sha256:42e5000a00af44a7b26852421ac63ce75f510ad1a97742cb131107088ee9fe30
     # https://github.com/commercialhaskell/stack/releases/download/v2.7.3/stack-2.7.3-windows-x86_64.tar.gz.sha256
     windows-x86_64: sha256:e6ba12e0ecabf0df2567d88a0d247da238bc114bcccfca4195f5e86472c9330c
+  '2.7.5':
+    # https://github.com/commercialhaskell/stack/releases/download/v2.7.5/stack-2.7.5-linux-x86_64.tar.gz.sha256
+    linux-x86_64: sha256:9bcd165358d4dcafd2b33320d4fe98ce72faaf62300cc9b0fb86a27eb670da50
+    # https://github.com/commercialhaskell/stack/releases/download/v2.7.5/stack-2.7.5-osx-x86_64.tar.gz.sha256
+    osx-x86_64: sha256:94176b71425d76b94b088515103316ae1ff96d123344b1f4609c103d0d5bdcc4
+    # https://github.com/commercialhaskell/stack/releases/download/v2.7.5/stack-2.7.5-windows-x86_64.tar.gz.sha256
+    windows-x86_64: sha256:c9b07982590d63db2310a44bfcf33c9f8bd84a0828abc17b2a394e90fbf6a914
