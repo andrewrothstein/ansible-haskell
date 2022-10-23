@@ -1,4 +1,6 @@
 ---
+haskell_stack_os: '{{ ansible_system | lower }}'
+haskell_stack_arch: '{{ ansible_architecture }}'
 haskell_stack_platform: '{{ haskell_stack_os }}-{{ haskell_stack_arch }}'
 haskell_stack_name: stack-{{ haskell_stack_ver }}-{{ haskell_stack_platform }}
 haskell_stack_checksum: '{{ haskell_stack_checksums[haskell_stack_ver][haskell_stack_platform] }}'

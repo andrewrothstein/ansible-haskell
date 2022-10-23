@@ -1,7 +1,5 @@
 ---
 haskell_stack_ver: 2.7.5
-haskell_stack_os: linux
-haskell_stack_arch: x86_64
 
 haskell_stack_parent_install_dir: /usr/local
 

@@ -1,4 +1,14 @@
 ---
+- include_role:
+    name: andrewrothstein.unarchive-deps
+- include_role:
+    name: andrewrothstein.gcc-toolbox
+- include_role:
+    name: andrewrothstein.git
+- include_role:
+    name: andrewrothstein.gpg
+- include_role:
+    name: andrewrothstein.bash
 - name: resolve platform specific vars
   include_vars: '{{ item }}'
   with_first_found:
