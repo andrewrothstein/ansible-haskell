@@ -17,8 +17,9 @@ dl_ver () {
     local ver=$1
     printf "  '%s':\n" $ver
     dl $ver linux x86_64
+    dl $ver linux aarch64
     dl $ver osx x86_64
     dl $ver windows x86_64
 }
 
-dl_ver ${1:-2.7.5}
+dl_ver ${1:-2.9.1}
