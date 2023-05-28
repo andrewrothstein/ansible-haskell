@@ -1,5 +1,5 @@
 ---
-haskell_stack_ver: 2.9.3
+haskell_stack_ver: 2.11.1
 haskell_stack_parent_install_dir: /usr/local
 
 haskell_stack_mirror: https://github.com/commercialhaskell/stack/releases/download
@@ -117,3 +117,12 @@ haskell_stack_checksums:
     osx-x86_64: sha256:34b74a0e764cd7363255005158984be11faa392871acc6b5af3238ac444a2806
     # https://github.com/commercialhaskell/stack/releases/download/v2.9.3/stack-2.9.3-windows-x86_64.tar.gz.sha256
     windows-x86_64: sha256:816be0ce817f74c18074b1a496b4ac9ea0b22b7745d9a7bf77c19161e251e8ad
+  '2.11.1':
+    # https://github.com/commercialhaskell/stack/releases/download/v2.11.1/stack-2.11.1-linux-x86_64.tar.gz.sha256
+    linux-x86_64: sha256:408a120e824ed6e6b24c548a2ff6f210fcb0eed246f204a280ed4c75af0517e7
+    # https://github.com/commercialhaskell/stack/releases/download/v2.11.1/stack-2.11.1-linux-aarch64.tar.gz.sha256
+    linux-aarch64: sha256:c7733d07ed78d6f4d82e0ebf6d260eb693c6c9df2208003d60caba69766f9c15
+    # https://github.com/commercialhaskell/stack/releases/download/v2.11.1/stack-2.11.1-osx-x86_64.tar.gz.sha256
+    osx-x86_64: sha256:cf3ce4c526fb29fabf84308a8a762f7ab703975f5c9eeb85aebcea97a02540fc
+    # https://github.com/commercialhaskell/stack/releases/download/v2.11.1/stack-2.11.1-windows-x86_64.tar.gz.sha256
+    windows-x86_64: sha256:74938b6f53aa5cfdece0d3a687675c30d2ae38798c38f81d394195b8db87cdc7
