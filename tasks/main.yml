@@ -1,16 +1,18 @@
 ---
-- include_role:
-    name: andrewrothstein.unarchive-deps
-- include_role:
-    name: andrewrothstein.gcc-toolbox
-- include_role:
+- name: Installing andrewrothstein.gcc_toolbox
+  ansible.builtin.include_role:
+    name: andrewrothstein.gcc_toolbox
+- name: Installing andrewrothstein.git
+  ansible.builtin.include_role:
     name: andrewrothstein.git
-- include_role:
+- name: Installing andrewrothstein.gpg
+  ansible.builtin.include_role:
     name: andrewrothstein.gpg
-- include_role:
+- name: Installing andrewrothstein.bash
+  ansible.builtin.include_role:
     name: andrewrothstein.bash
-- name: resolve platform specific vars
-  include_vars: '{{ item }}'
+- name: Resolve platform specific vars
+  ansible.builtin.include_vars: '{{ item }}'
   with_first_found:
     - files:
         - '{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml'
@@ -19,46 +21,52 @@
       skip: true
       paths:
         - '{{ role_path }}/vars'
-- name: install dep os pkgs...
-  become: yes
+- name: Install dep os pkgs...
+  become: true
   become_user: root
-  package:
-    name: '{{ haskell_stack_dep_pkgs|default([]) }}'
+  ansible.builtin.package:
+    name: '{{ haskell_stack_dep_pkgs | default([]) }}'
     state: present
-- name: check for installation in  {{ haskell_stack_install_dir }}...
-  become: yes
-  stat:
+- name: Check for installation in  {{ haskell_stack_install_dir }}...
+  become: true
+  ansible.builtin.stat:
     path: '{{ haskell_stack_install_dir }}'
   changed_when: false
   register: haskell_stack_binary
-- when: not haskell_stack_binary.stat.exists
+- name: Downloading and installing stack
+  when: not haskell_stack_binary.stat.exists
   block:
-    - name: downloading {{ haskell_stack_tgz_url }} to {{ haskell_stack_tmp_tgz }}
-      become: yes
+    - name: Downloading {{ haskell_stack_tgz_url }} to {{ haskell_stack_tmp_tgz }}
+      become: true
       become_user: root
-      get_url:
+      ansible.builtin.get_url:
         url: '{{ haskell_stack_tgz_url }}'
         dest: '{{ haskell_stack_tmp_tgz }}'
         checksum: '{{ haskell_stack_checksum }}'
-    - name: unarchiving {{ haskell_stack_tmp_tgz }} to {{ haskell_stack_parent_install_dir }}
-      become: yes
+        mode: '644'
+    - name: Installing andrewrothstein.unarchivedeps
+      ansible.builtin.include_role:
+        name: andrewrothstein.unarchivedeps
+    - name: Unarchiving {{ haskell_stack_tmp_tgz }} to {{ haskell_stack_parent_install_dir }}
+      become: true
       become_user: root
-      unarchive:
+      ansible.builtin.unarchive:
+        remote_src: true
         src: '{{ haskell_stack_tmp_tgz }}'
         dest: '{{ haskell_stack_parent_install_dir }}'
         creates: '{{ haskell_stack_install_dir }}'
   always:
-    - name: rm {{ haskell_stack_tmp_tgz }}
-      become: yes
+    - name: Rm {{ haskell_stack_tmp_tgz }}
+      become: true
       become_user: root
-      file:
+      ansible.builtin.file:
         path: '{{ haskell_stack_tmp_tgz }}'
         state: absent
 
-- name: linking {{ haskell_stack_link_exe }} to {{ haskell_stack_install_exe }}
-  become: yes
+- name: Linking {{ haskell_stack_link_exe }} to {{ haskell_stack_install_exe }}
+  become: true
   become_user: root
-  file:
+  ansible.builtin.file:
     src: '{{ haskell_stack_install_exe }}'
     dest: '{{ haskell_stack_link_exe }}'
     state: link

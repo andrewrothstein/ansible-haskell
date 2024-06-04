@@ -1,14 +1,17 @@
 ---
-- hosts: all
+- name: Testing andrewrothstein.haskell
+  hosts: all
   roles:
     - role: '{{ playbook_dir }}'
   tasks:
-    - command: /usr/local/bin/stack --version
+    - name: Executing 'stack --version'
+      ansible.builtin.command: stack --version
+      changed_when: false
       register: haskell_stack_test_output
-    - name: stack --version
-      debug:
+    - name: Output from 'stack --version'
+      ansible.builtin.debug:
         msg: '{{ haskell_stack_test_output.stdout }}'
-    - name: setup...
-      command: /usr/local/bin/stack setup
+    - name: Setting up...
+      command: stack setup
       args:
         creates: '{{ ansible_env.HOME }}/.stack'
