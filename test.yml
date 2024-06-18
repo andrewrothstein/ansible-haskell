@@ -12,6 +12,6 @@
       ansible.builtin.debug:
         msg: '{{ haskell_stack_test_output.stdout }}'
     - name: Setting up...
-      command: stack setup
+      ansible.builtin.command: stack setup
       args:
         creates: '{{ ansible_env.HOME }}/.stack'
