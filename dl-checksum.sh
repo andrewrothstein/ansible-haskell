@@ -22,4 +22,4 @@ dl_ver () {
     dl $ver windows x86_64
 }
 
-dl_ver ${1:-3.3.1}
+dl_ver ${1:-3.5.1}
